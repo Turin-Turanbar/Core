@@ -2,7 +2,7 @@
 # Auto-sync: called by launchd when files change in this folder.
 # Commits any changes and pushes to GitHub.
 
-REPO_DIR="/Users/molecula/Desktop/Core Design System"
+REPO_DIR="/Users/molecula/Desktop/Core"
 LOG="$REPO_DIR/.sync.log"
 
 cd "$REPO_DIR" || exit 1
