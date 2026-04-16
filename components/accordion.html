@@ -423,5 +423,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
   <script src="../main.js"></script>
   <script src="../gate.js"></script>
+  <script>
+    document.querySelectorAll('.acc-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const acc = btn.closest('.acc');
+        acc.dataset.open = acc.dataset.open === 'true' ? 'false' : 'true';
+      });
+    });
+  </script>
 </body>
 </html>
