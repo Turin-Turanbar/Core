@@ -912,11 +912,13 @@ code[class*="language-"] {
   .hamburger { display: inline-flex; }
   .content-area { margin-left: 0; }
   .prose-wrapper { padding: var(--core-space-8) var(--core-space-5); }
+  .content { padding: var(--core-space-8) var(--core-space-6); }
 }
 
 @media (max-width: 640px) {
   .page-title { font-size: var(--core-text-3xl); }
   .prose-wrapper { padding: var(--core-space-6) var(--core-space-4); }
+  .content { padding: var(--core-space-6) var(--core-space-4); }
   .header-inner { padding: 0 var(--core-space-4); }
   .logo-label, .logo-sep { display: none; }
   .version-badge { display: none; }
