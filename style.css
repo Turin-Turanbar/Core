@@ -407,6 +407,15 @@ input, select, textarea { font-family: inherit; }
   min-width: 0;
 }
 
+/* Component page content wrapper */
+.content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: var(--core-space-10) var(--core-space-12);
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .prose-wrapper {
   max-width: var(--core-prose-max-w);
   margin: 0 auto;
