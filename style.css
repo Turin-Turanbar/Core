@@ -427,7 +427,53 @@ input, select, textarea { font-family: inherit; }
    ============================================================ */
 .prose { line-height: var(--core-leading-relaxed); }
 
-/* Page header */
+/* Page header — component pages */
+.page-header {
+  padding-bottom: var(--core-space-8);
+  border-bottom: 1px solid var(--core-color-border);
+  margin-bottom: var(--core-space-2);
+}
+
+.page-breadcrumb {
+  font-size: var(--core-text-sm);
+  color: var(--core-color-muted-fg);
+  margin-bottom: var(--core-space-2);
+}
+
+/* Content section headings (component pages) */
+.content section h2 {
+  font-size: var(--core-text-2xl);
+  font-weight: var(--core-weight-semibold);
+  letter-spacing: var(--core-tracking-tight);
+  line-height: var(--core-leading-snug);
+  color: var(--core-color-fg);
+  margin-top: var(--core-space-12);
+  margin-bottom: var(--core-space-3);
+  scroll-margin-top: calc(var(--core-header-h) + var(--core-space-4));
+}
+
+.content > section:first-of-type h2 {
+  margin-top: var(--core-space-8);
+}
+
+.content section > p {
+  font-size: var(--core-text-base);
+  color: var(--core-color-muted-fg);
+  line-height: var(--core-leading-relaxed);
+  margin-bottom: var(--core-space-4);
+}
+
+.content section > p code {
+  font-family: var(--core-font-mono);
+  font-size: var(--core-text-xs);
+  background: var(--core-color-muted);
+  border: 1px solid var(--core-color-border);
+  border-radius: var(--core-radius-sm);
+  padding: 1px 5px;
+  color: var(--core-color-fg);
+}
+
+/* Page header — tokens page */
 .page-eyebrow {
   display: inline-block;
   font-size: var(--core-text-xs);
