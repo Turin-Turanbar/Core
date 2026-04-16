@@ -21,7 +21,7 @@
       max-width: 100%;
       display: flex;
       flex-direction: column;
-      gap: var(--core-space-6);
+      gap: 0;
     }
 
     .acc-header {
@@ -99,10 +99,12 @@
     .acc-body {
       overflow: hidden;
       max-height: 0;
-      transition: max-height 220ms ease;
+      margin-top: 0;
+      transition: max-height 220ms ease, margin-top 220ms ease;
     }
     .acc[data-open="true"] .acc-body {
       max-height: 400px;
+      margin-top: var(--core-space-6); /* 24px — matches Figma gap */
     }
 
     /* Icon swap */
