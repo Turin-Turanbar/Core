@@ -95,9 +95,47 @@
       color: #1278f4;
     }
 
-    /* collapsed: no body shown */
-    .acc[data-open="false"] .acc-body {
-      display: none;
+    /* Body collapse / expand */
+    .acc-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 220ms ease;
+    }
+    .acc[data-open="true"] .acc-body {
+      max-height: 400px;
+    }
+
+    /* Icon swap */
+    .acc-icon-minus { display: none; }
+    .acc[data-open="true"] .acc-icon-plus { display: none; }
+    .acc[data-open="true"] .acc-icon-minus { display: flex; }
+
+    /* Slot placeholder */
+    .acc-slot {
+      border-radius: var(--core-radius-lg);
+      background: var(--core-color-surface);
+      border: 1px dashed var(--core-color-border);
+      padding: var(--core-space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--core-space-2);
+    }
+    .acc-slot p {
+      font-size: 13px;
+      color: var(--core-color-muted-fg);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .acc-slot-bars {
+      display: flex;
+      flex-direction: column;
+      gap: var(--core-space-2);
+      margin-top: var(--core-space-2);
+    }
+    .acc-slot-bar {
+      height: 10px;
+      border-radius: var(--core-radius-full);
+      background: var(--core-color-border);
     }
 
     .cp-preview {
