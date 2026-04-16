@@ -263,12 +263,12 @@
           <p class="page-lead" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">A collapsible container that reveals or hides content when toggled. Use it to progressively disclose information and reduce visual complexity.</p>
         </div>
 
-        <!-- ─── Collapsed ─── -->
-        <section id="collapsed">
-          <h2>Collapsed</h2>
-          <p>The default state. The header is visible; content is hidden. The <code>+</code> icon signals there is more to reveal.</p>
+        <!-- ─── Default ─── -->
+        <section id="default">
+          <h2>Default</h2>
+          <p>Click the header to toggle between collapsed and expanded. Use <code>[isOpen]</code> to set the initial state.</p>
 
-          <div class="component-preview" role="region" aria-label="Accordion collapsed preview">
+          <div class="component-preview" role="region" aria-label="Accordion default preview">
             <div class="cp-tabs" role="tablist">
               <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-1">Preview</button>
               <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-1">Code</button>
@@ -277,16 +277,24 @@
             <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-1" role="tabpanel">
               <div class="cp-preview">
                 <div class="acc" data-open="false">
-                  <button class="acc-header">
+                  <button class="acc-header acc-toggle">
                     <span class="acc-headline">Template Information</span>
-                    <span class="acc-icon">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
+                    <span class="acc-icon acc-icon-plus">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <span class="acc-icon acc-icon-minus">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </span>
                   </button>
                   <div class="acc-body">
-                    <div class="acc-slot">Slot</div>
+                    <div class="acc-slot">
+                      <p>Place any content here — descriptions, forms, settings, or nested components.</p>
+                      <div class="acc-slot-bars">
+                        <div class="acc-slot-bar" style="width:80%"></div>
+                        <div class="acc-slot-bar" style="width:60%"></div>
+                        <div class="acc-slot-bar" style="width:72%"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -302,18 +310,19 @@
   [headline]="'Template Information'"
   [isOpen]="false"
   [hasBadge]="false"&gt;
+  &lt;your-content /&gt;
 &lt;/core-accordion&gt;</code></pre>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- ─── Expanded ─── -->
-        <section id="expanded">
-          <h2>Expanded</h2>
-          <p>The open state. Content is revealed in the slot below the header. The icon transitions to <code>−</code> to indicate the item can be collapsed.</p>
+        <!-- ─── With Badge ─── -->
+        <section id="with-badge">
+          <h2>With Badge</h2>
+          <p>Set <code>[hasBadge]="true"</code> to show a numeric badge beside the headline — useful for counts like pending items or required fields.</p>
 
-          <div class="component-preview" role="region" aria-label="Accordion expanded preview">
+          <div class="component-preview" role="region" aria-label="Accordion with badge preview">
             <div class="cp-tabs" role="tablist">
               <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-2">Preview</button>
               <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-2">Code</button>
@@ -321,17 +330,26 @@
 
             <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-2" role="tabpanel">
               <div class="cp-preview">
-                <div class="acc" data-open="true">
-                  <button class="acc-header">
+                <div class="acc" data-open="false">
+                  <button class="acc-header acc-toggle">
                     <span class="acc-headline">Template Information</span>
-                    <span class="acc-icon">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
+                    <div class="acc-badge"><span>1</span></div>
+                    <span class="acc-icon acc-icon-plus">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <span class="acc-icon acc-icon-minus">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </span>
                   </button>
                   <div class="acc-body">
-                    <div class="acc-slot">Slot</div>
+                    <div class="acc-slot">
+                      <p>Place any content here — descriptions, forms, settings, or nested components.</p>
+                      <div class="acc-slot-bars">
+                        <div class="acc-slot-bar" style="width:80%"></div>
+                        <div class="acc-slot-bar" style="width:60%"></div>
+                        <div class="acc-slot-bar" style="width:72%"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -345,120 +363,22 @@
                 </button>
                 <pre><code class="language-html">&lt;core-accordion
   [headline]="'Template Information'"
-  [isOpen]="true"
-  [hasBadge]="false"&gt;
-  &lt;!-- projected content goes here --&gt;
-&lt;/core-accordion&gt;</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ─── With Badge ─── -->
-        <section id="with-badge">
-          <h2>With Badge</h2>
-          <p>Set <code>[hasBadge]="true"</code> to display a numeric badge next to the headline. Useful for surfacing counts — pending items, required fields, etc.</p>
-
-          <div class="component-preview" role="region" aria-label="Accordion with badge preview">
-            <div class="cp-tabs" role="tablist">
-              <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-3">Preview</button>
-              <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-3">Code</button>
-            </div>
-
-            <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-3" role="tabpanel">
-              <div class="cp-preview">
-                <div class="acc" data-open="false">
-                  <button class="acc-header">
-                    <span class="acc-headline">Template Information</span>
-                    <div class="acc-badge"><span>1</span></div>
-                    <span class="acc-icon">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
-                    </span>
-                  </button>
-                  <div class="acc-body">
-                    <div class="acc-slot">Slot</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="cp-panel" data-panel="code" id="cp-panel-code-3" role="tabpanel" hidden>
-              <div class="cp-code">
-                <button class="copy-btn" aria-label="Copy code">
-                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  Copy
-                </button>
-                <pre><code class="language-html">&lt;core-accordion
-  [headline]="'Template Information'"
   [isOpen]="false"
   [hasBadge]="true"&gt;
+  &lt;your-content /&gt;
 &lt;/core-accordion&gt;</code></pre>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- ─── With Badge Expanded ─── -->
-        <section id="with-badge-expanded">
-          <h2>With Badge Expanded</h2>
-          <p>Badge and open state combined. The badge remains visible in the header while the content slot is displayed below.</p>
-
-          <div class="component-preview" role="region" aria-label="Accordion with badge expanded preview">
-            <div class="cp-tabs" role="tablist">
-              <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-4">Preview</button>
-              <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-4">Code</button>
-            </div>
-
-            <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-4" role="tabpanel">
-              <div class="cp-preview">
-                <div class="acc" data-open="true">
-                  <button class="acc-header">
-                    <span class="acc-headline">Template Information</span>
-                    <div class="acc-badge"><span>1</span></div>
-                    <span class="acc-icon">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
-                    </span>
-                  </button>
-                  <div class="acc-body">
-                    <div class="acc-slot">Slot</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="cp-panel" data-panel="code" id="cp-panel-code-4" role="tabpanel" hidden>
-              <div class="cp-code">
-                <button class="copy-btn" aria-label="Copy code">
-                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  Copy
-                </button>
-                <pre><code class="language-html">&lt;core-accordion
-  [headline]="'Template Information'"
-  [isOpen]="true"
-  [hasBadge]="true"&gt;
-  &lt;!-- projected content goes here --&gt;
-&lt;/core-accordion&gt;</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ─── Props table ─── -->
+        <!-- ─── Props ─── -->
         <section id="props">
           <h2>Props</h2>
           <div class="token-table-wrapper" style="margin: var(--core-space-4) 0 var(--core-space-8);">
             <table class="token-table">
               <thead>
-                <tr>
-                  <th>Prop</th>
-                  <th>Type</th>
-                  <th>Default</th>
-                  <th>Description</th>
-                </tr>
+                <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
               </thead>
               <tbody>
                 <tr>
@@ -477,7 +397,7 @@
                   <td><code>hasBadge</code></td>
                   <td><code>boolean</code></td>
                   <td><code>false</code></td>
-                  <td>Shows a numeric badge (value: <code>1</code>) next to the headline.</td>
+                  <td>Shows a numeric badge next to the headline.</td>
                 </tr>
               </tbody>
             </table>
@@ -491,10 +411,8 @@
     <aside class="toc" aria-label="On this page">
       <p class="toc-title">On this page</p>
       <ul class="toc-list">
-        <li><a href="#collapsed" class="toc-link">Collapsed</a></li>
-        <li><a href="#expanded" class="toc-link">Expanded</a></li>
+        <li><a href="#default" class="toc-link">Default</a></li>
         <li><a href="#with-badge" class="toc-link">With Badge</a></li>
-        <li><a href="#with-badge-expanded" class="toc-link">With Badge Expanded</a></li>
         <li><a href="#props" class="toc-link">Props</a></li>
       </ul>
     </aside>
