@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion — CORE Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <style>
+    /* ── Accordion demo component ── */
+    .acc {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: var(--core-radius-lg);
+      padding: var(--core-space-6);
+      width: 416px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--core-space-6);
+    }
+
+    .acc-header {
+      display: flex;
+      align-items: center;
+      gap: var(--core-space-3);
+      height: 24px;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .acc-headline {
+      flex: 1 0 0;
+      font-family: var(--core-font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #1e1e1e;
+    }
+
+    .acc-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7f7f7;
+      border: 1px solid #f2f2f2;
+      border-radius: var(--core-radius-sm);
+      height: 24px;
+      padding: 0 var(--core-space-2);
+      flex-shrink: 0;
+    }
+
+    .acc-badge span {
+      font-family: var(--core-font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      color: #1e1e1e;
+      white-space: nowrap;
+    }
+
+    .acc-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #1e1e1e;
+    }
+
+    .acc-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .acc-slot {
+      background: #ebf4ff;
+      border-radius: var(--core-radius-lg);
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--core-font-sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: #1278f4;
+    }
+
+    /* collapsed: no body shown */
+    .acc[data-open="false"] .acc-body {
+      display: none;
+    }
+
+    .cp-preview {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: var(--core-space-10);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <div class="header-left">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <a href="../index.html" class="logo-link">
+          <span class="logo-mark">CORE</span>
+          <span class="logo-sep"></span>
+          <span class="logo-label">Design System</span>
+        </a>
+        <span class="version-badge">v1.0</span>
+      </div>
+      <div class="header-right">
+        <a href="https://github.com/Turin-Turanbar/Core" target="_blank" rel="noopener noreferrer" class="header-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-overlay" id="overlay"></div>
+
+  <div class="layout">
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar" id="sidebar" aria-label="Documentation navigation">
+      <nav>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="getting-started" aria-controls="nav-getting-started">
+            Getting Started
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-getting-started">
+            <li><a href="../index.html" class="nav-link">Introduction</a></li>
+            <li><a href="#" class="nav-link">Installation</a></li>
+            <li><a href="#" class="nav-link">Theming</a></li>
+            <li><a href="#" class="nav-link">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="tokens" aria-controls="nav-tokens">
+            Tokens
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-tokens">
+            <li><a href="../tokens.html" class="nav-link">Color</a></li>
+            <li><a href="../tokens.html#typography" class="nav-link">Typography</a></li>
+            <li><a href="../tokens.html#spacing" class="nav-link">Spacing</a></li>
+            <li><a href="../tokens.html#radius" class="nav-link">Border Radius</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="components" aria-controls="nav-components">
+            Components
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-components">
+            <li><a href="accordion.html" class="nav-link active" aria-current="page">Accordion</a></li>
+            <li><a href="#" class="nav-link">Action Menu</a></li>
+            <li><a href="#" class="nav-link">Autocomplete</a></li>
+            <li><a href="#" class="nav-link">Badge</a></li>
+            <li><a href="#" class="nav-link">Button</a></li>
+            <li><a href="#" class="nav-link">Button Group</a></li>
+            <li><a href="#" class="nav-link">Checkbox</a></li>
+            <li><a href="#" class="nav-link">Chips</a></li>
+            <li><a href="#" class="nav-link">Choicebox</a></li>
+            <li><a href="#" class="nav-link">Datepicker</a></li>
+            <li><a href="#" class="nav-link">Divider</a></li>
+            <li><a href="#" class="nav-link">Empty State</a></li>
+            <li><a href="#" class="nav-link">File Upload</a></li>
+            <li><a href="#" class="nav-link">Input</a></li>
+            <li><a href="#" class="nav-link">Link</a></li>
+            <li><a href="#" class="nav-link">Modal</a></li>
+            <li><a href="#" class="nav-link">Pagination</a></li>
+            <li><a href="#" class="nav-link">Pictures</a></li>
+            <li><a href="#" class="nav-link">Radio</a></li>
+            <li><a href="#" class="nav-link">Segment Control</a></li>
+            <li><a href="#" class="nav-link">Select</a></li>
+            <li><a href="#" class="nav-link">Stepper</a></li>
+            <li><a href="#" class="nav-link">Switch</a></li>
+            <li><a href="#" class="nav-link">Tabs</a></li>
+            <li><a href="#" class="nav-link">Toast</a></li>
+            <li><a href="#" class="nav-link">Tooltip</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="templates" aria-controls="nav-templates">
+            Templates
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-templates">
+            <li><a href="#" class="nav-link">Navigation</a></li>
+            <li><a href="#" class="nav-link">Contextual Header</a></li>
+            <li><a href="#" class="nav-link">Filters</a></li>
+            <li><a href="#" class="nav-link">Drawer</a></li>
+            <li><a href="#" class="nav-link">Table</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- ═══ MAIN ═══ -->
+    <div class="content-area">
+      <main class="content" id="main-content">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-breadcrumb">Components</div>
+          <h1 class="page-title">Accordion</h1>
+          <p class="page-lead">A collapsible container that reveals or hides content when toggled. Use it to progressively disclose information and reduce visual complexity.</p>
+        </div>
+
+        <!-- ─── Collapsed ─── -->
+        <section id="collapsed">
+          <h2>Collapsed</h2>
+          <p>The default state. The header is visible; content is hidden. The <code>+</code> icon signals there is more to reveal.</p>
+
+          <div class="component-preview" role="region" aria-label="Accordion collapsed preview">
+            <div class="cp-tabs" role="tablist">
+              <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-1">Preview</button>
+              <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-1">Code</button>
+            </div>
+
+            <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-1" role="tabpanel">
+              <div class="cp-preview">
+                <div class="acc" data-open="false">
+                  <button class="acc-header">
+                    <span class="acc-headline">Template Information</span>
+                    <span class="acc-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <div class="acc-body">
+                    <div class="acc-slot">Slot</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cp-panel" data-panel="code" id="cp-panel-code-1" role="tabpanel" hidden>
+              <div class="cp-code">
+                <button class="copy-btn" aria-label="Copy code">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Copy
+                </button>
+                <pre><code class="language-html">&lt;core-accordion
+  [headline]="'Template Information'"
+  [isOpen]="false"
+  [hasBadge]="false"&gt;
+&lt;/core-accordion&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── Expanded ─── -->
+        <section id="expanded">
+          <h2>Expanded</h2>
+          <p>The open state. Content is revealed in the slot below the header. The icon transitions to <code>−</code> to indicate the item can be collapsed.</p>
+
+          <div class="component-preview" role="region" aria-label="Accordion expanded preview">
+            <div class="cp-tabs" role="tablist">
+              <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-2">Preview</button>
+              <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-2">Code</button>
+            </div>
+
+            <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-2" role="tabpanel">
+              <div class="cp-preview">
+                <div class="acc" data-open="true">
+                  <button class="acc-header">
+                    <span class="acc-headline">Template Information</span>
+                    <span class="acc-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <div class="acc-body">
+                    <div class="acc-slot">Slot</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cp-panel" data-panel="code" id="cp-panel-code-2" role="tabpanel" hidden>
+              <div class="cp-code">
+                <button class="copy-btn" aria-label="Copy code">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Copy
+                </button>
+                <pre><code class="language-html">&lt;core-accordion
+  [headline]="'Template Information'"
+  [isOpen]="true"
+  [hasBadge]="false"&gt;
+  &lt;!-- projected content goes here --&gt;
+&lt;/core-accordion&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── With Badge ─── -->
+        <section id="with-badge">
+          <h2>With Badge</h2>
+          <p>Set <code>[hasBadge]="true"</code> to display a numeric badge next to the headline. Useful for surfacing counts — pending items, required fields, etc.</p>
+
+          <div class="component-preview" role="region" aria-label="Accordion with badge preview">
+            <div class="cp-tabs" role="tablist">
+              <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-3">Preview</button>
+              <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-3">Code</button>
+            </div>
+
+            <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-3" role="tabpanel">
+              <div class="cp-preview">
+                <div class="acc" data-open="false">
+                  <button class="acc-header">
+                    <span class="acc-headline">Template Information</span>
+                    <div class="acc-badge"><span>1</span></div>
+                    <span class="acc-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <div class="acc-body">
+                    <div class="acc-slot">Slot</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cp-panel" data-panel="code" id="cp-panel-code-3" role="tabpanel" hidden>
+              <div class="cp-code">
+                <button class="copy-btn" aria-label="Copy code">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Copy
+                </button>
+                <pre><code class="language-html">&lt;core-accordion
+  [headline]="'Template Information'"
+  [isOpen]="false"
+  [hasBadge]="true"&gt;
+&lt;/core-accordion&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── With Badge Expanded ─── -->
+        <section id="with-badge-expanded">
+          <h2>With Badge Expanded</h2>
+          <p>Badge and open state combined. The badge remains visible in the header while the content slot is displayed below.</p>
+
+          <div class="component-preview" role="region" aria-label="Accordion with badge expanded preview">
+            <div class="cp-tabs" role="tablist">
+              <button class="cp-tab active" data-tab="preview" role="tab" aria-selected="true" aria-controls="cp-panel-preview-4">Preview</button>
+              <button class="cp-tab" data-tab="code" role="tab" aria-selected="false" aria-controls="cp-panel-code-4">Code</button>
+            </div>
+
+            <div class="cp-panel active" data-panel="preview" id="cp-panel-preview-4" role="tabpanel">
+              <div class="cp-preview">
+                <div class="acc" data-open="true">
+                  <button class="acc-header">
+                    <span class="acc-headline">Template Information</span>
+                    <div class="acc-badge"><span>1</span></div>
+                    <span class="acc-icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <div class="acc-body">
+                    <div class="acc-slot">Slot</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cp-panel" data-panel="code" id="cp-panel-code-4" role="tabpanel" hidden>
+              <div class="cp-code">
+                <button class="copy-btn" aria-label="Copy code">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Copy
+                </button>
+                <pre><code class="language-html">&lt;core-accordion
+  [headline]="'Template Information'"
+  [isOpen]="true"
+  [hasBadge]="true"&gt;
+  &lt;!-- projected content goes here --&gt;
+&lt;/core-accordion&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── Props table ─── -->
+        <section id="props">
+          <h2>Props</h2>
+          <div class="token-table-wrapper" style="margin: var(--core-space-4) 0 var(--core-space-8);">
+            <table class="token-table">
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>headline</code></td>
+                  <td><code>string</code></td>
+                  <td><code>"Template Information"</code></td>
+                  <td>Label shown in the accordion header.</td>
+                </tr>
+                <tr>
+                  <td><code>isOpen</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>Controls whether the content slot is visible.</td>
+                </tr>
+                <tr>
+                  <td><code>hasBadge</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>Shows a numeric badge (value: <code>1</code>) next to the headline.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- ═══ TOC ═══ -->
+    <aside class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul class="toc-list">
+        <li><a href="#collapsed" class="toc-link">Collapsed</a></li>
+        <li><a href="#expanded" class="toc-link">Expanded</a></li>
+        <li><a href="#with-badge" class="toc-link">With Badge</a></li>
+        <li><a href="#with-badge-expanded" class="toc-link">With Badge Expanded</a></li>
+        <li><a href="#props" class="toc-link">Props</a></li>
+      </ul>
+    </aside>
+
+  </div><!-- /layout -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="../main.js"></script>
+  <script src="../gate.js"></script>
+</body>
+</html>
