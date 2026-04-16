@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokens — CORE Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <div class="header-left">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <a href="index.html" class="logo-link">
+          <span class="logo-mark">CORE</span>
+          <span class="logo-sep"></span>
+          <span class="logo-label">Design System</span>
+        </a>
+        <span class="version-badge">v1.0</span>
+      </div>
+      <div class="header-right">
+        <a href="https://github.com/Turin-Turanbar/Core" target="_blank" rel="noopener noreferrer" class="header-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-overlay" id="overlay"></div>
+
+  <div class="layout">
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar" id="sidebar" aria-label="Documentation navigation">
+      <nav>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="getting-started" aria-controls="nav-getting-started">
+            Getting Started
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-getting-started">
+            <li><a href="index.html" class="nav-link">Introduction</a></li>
+            <li><a href="#" class="nav-link">Installation</a></li>
+            <li><a href="#" class="nav-link">Theming</a></li>
+            <li><a href="#" class="nav-link">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="tokens" aria-controls="nav-tokens">
+            Tokens
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-tokens">
+            <li><a href="tokens.html" class="nav-link active" aria-current="page">Color</a></li>
+            <li><a href="tokens.html#typography" class="nav-link">Typography</a></li>
+            <li><a href="tokens.html#spacing" class="nav-link">Spacing</a></li>
+            <li><a href="tokens.html#radius" class="nav-link">Border Radius</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="components" aria-controls="nav-components">
+            Components
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-components">
+            <li><a href="#" class="nav-link">Accordion</a></li>
+            <li><a href="#" class="nav-link">Action Menu</a></li>
+            <li><a href="#" class="nav-link">Autocomplete</a></li>
+            <li><a href="#" class="nav-link">Badge</a></li>
+            <li><a href="#" class="nav-link">Button</a></li>
+            <li><a href="#" class="nav-link">Button Group</a></li>
+            <li><a href="#" class="nav-link">Checkbox</a></li>
+            <li><a href="#" class="nav-link">Chips</a></li>
+            <li><a href="#" class="nav-link">Choicebox</a></li>
+            <li><a href="#" class="nav-link">Datepicker</a></li>
+            <li><a href="#" class="nav-link">Divider</a></li>
+            <li><a href="#" class="nav-link">Empty State</a></li>
+            <li><a href="#" class="nav-link">File Upload</a></li>
+            <li><a href="#" class="nav-link">Input</a></li>
+            <li><a href="#" class="nav-link">Link</a></li>
+            <li><a href="#" class="nav-link">Modal</a></li>
+            <li><a href="#" class="nav-link">Pagination</a></li>
+            <li><a href="#" class="nav-link">Pictures</a></li>
+            <li><a href="#" class="nav-link">Radio</a></li>
+            <li><a href="#" class="nav-link">Segment Control</a></li>
+            <li><a href="#" class="nav-link">Select</a></li>
+            <li><a href="#" class="nav-link">Stepper</a></li>
+            <li><a href="#" class="nav-link">Switch</a></li>
+            <li><a href="#" class="nav-link">Tabs</a></li>
+            <li><a href="#" class="nav-link">Toast</a></li>
+            <li><a href="#" class="nav-link">Tooltip</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <button class="nav-section-btn" data-section="templates" aria-controls="nav-templates">
+            Templates
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-list" id="nav-templates">
+            <li><a href="#" class="nav-link">Navigation</a></li>
+            <li><a href="#" class="nav-link">Contextual Header</a></li>
+            <li><a href="#" class="nav-link">Filters</a></li>
+            <li><a href="#" class="nav-link">Drawer</a></li>
+            <li><a href="#" class="nav-link">Table</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- ═══ MAIN ═══ -->
+    <div class="content-area">
+      <div class="prose-wrapper">
+        <main>
+          <article class="prose">
+
+            <header>
+              <span class="page-eyebrow">Foundation</span>
+              <h1 class="page-title">Tokens</h1>
+              <p class="page-lead">Design tokens are the single source of truth for all visual decisions in CORE — colors, typography, spacing, and shape. They're defined in Figma and exposed as CSS custom properties (<code>--core-*</code>).</p>
+            </header>
+
+            <!-- ══════════════════════════════════
+                 COLORS
+            ══════════════════════════════════ -->
+            <section id="color">
+              <h2>Color</h2>
+              <p>The color system is organized into two layers: <strong>primitives</strong> (the raw palette) and <strong>semantic</strong> tokens (purpose-driven aliases that reference primitives).</p>
+
+              <!-- Neutral -->
+              <h3 id="color-neutral">Neutral</h3>
+              <p>The primary neutral scale. <code>neutral/950</code> is designated as the primary brand color.</p>
+
+              <div class="swatch-grid" role="list">
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#ffffff;border:1px solid var(--core-color-border)"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/0</span>
+                    <code class="swatch-var">--core-neutral-0</code>
+                    <span class="swatch-hex">#ffffff</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#fcfcfc;border:1px solid var(--core-color-border)"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/25</span>
+                    <code class="swatch-var">--core-neutral-25</code>
+                    <span class="swatch-hex">#fcfcfc</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#fafafa;border:1px solid var(--core-color-border)"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/50</span>
+                    <code class="swatch-var">--core-neutral-50</code>
+                    <span class="swatch-hex">#fafafa</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#f4f4f5"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/100</span>
+                    <code class="swatch-var">--core-neutral-100</code>
+                    <span class="swatch-hex">#f4f4f5</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#e4e4e7"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/200</span>
+                    <code class="swatch-var">--core-neutral-200</code>
+                    <span class="swatch-hex">#e4e4e7</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#d4d4d8"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/300</span>
+                    <code class="swatch-var">--core-neutral-300</code>
+                    <span class="swatch-hex">#d4d4d8</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#a1a1aa"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/400</span>
+                    <code class="swatch-var">--core-neutral-400</code>
+                    <span class="swatch-hex">#a1a1aa</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#71717a"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/500</span>
+                    <code class="swatch-var">--core-neutral-500</code>
+                    <span class="swatch-hex">#71717a</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#52525b"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/600</span>
+                    <code class="swatch-var">--core-neutral-600</code>
+                    <span class="swatch-hex">#52525b</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#3f3f46"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/700</span>
+                    <code class="swatch-var">--core-neutral-700</code>
+                    <span class="swatch-hex">#3f3f46</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#27272a"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/800</span>
+                    <code class="swatch-var">--core-neutral-800</code>
+                    <span class="swatch-hex">#27272a</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#18181b"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/900</span>
+                    <code class="swatch-var">--core-neutral-900</code>
+                    <span class="swatch-hex">#18181b</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#09090b">
+                    <span class="swatch-badge">Primary</span>
+                  </div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/950</span>
+                    <code class="swatch-var">--core-neutral-950</code>
+                    <span class="swatch-hex">#09090b</span>
+                  </div>
+                </div>
+                <div class="swatch-item" role="listitem">
+                  <div class="swatch-color" style="background:#000000"></div>
+                  <div class="swatch-meta">
+                    <span class="swatch-name">neutral/1000</span>
+                    <code class="swatch-var">--core-neutral-1000</code>
+                    <span class="swatch-hex">#000000</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Blue -->
+              <h3 id="color-blue">Blue</h3>
+              <div class="swatch-grid" role="list">
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#eff6ff"></div><div class="swatch-meta"><span class="swatch-name">blue/50</span><code class="swatch-var">--core-blue-50</code><span class="swatch-hex">#eff6ff</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#dbeafe"></div><div class="swatch-meta"><span class="swatch-name">blue/100</span><code class="swatch-var">--core-blue-100</code><span class="swatch-hex">#dbeafe</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#bfdbfe"></div><div class="swatch-meta"><span class="swatch-name">blue/200</span><code class="swatch-var">--core-blue-200</code><span class="swatch-hex">#bfdbfe</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#93c5fd"></div><div class="swatch-meta"><span class="swatch-name">blue/300</span><code class="swatch-var">--core-blue-300</code><span class="swatch-hex">#93c5fd</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#60a5fa"></div><div class="swatch-meta"><span class="swatch-name">blue/400</span><code class="swatch-var">--core-blue-400</code><span class="swatch-hex">#60a5fa</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#3b82f6"></div><div class="swatch-meta"><span class="swatch-name">blue/500</span><code class="swatch-var">--core-blue-500</code><span class="swatch-hex">#3b82f6</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#2563eb"></div><div class="swatch-meta"><span class="swatch-name">blue/600</span><code class="swatch-var">--core-blue-600</code><span class="swatch-hex">#2563eb</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#1d4ed8"></div><div class="swatch-meta"><span class="swatch-name">blue/700</span><code class="swatch-var">--core-blue-700</code><span class="swatch-hex">#1d4ed8</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#1e40af"></div><div class="swatch-meta"><span class="swatch-name">blue/800</span><code class="swatch-var">--core-blue-800</code><span class="swatch-hex">#1e40af</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#1e3a8a"></div><div class="swatch-meta"><span class="swatch-name">blue/900</span><code class="swatch-var">--core-blue-900</code><span class="swatch-hex">#1e3a8a</span></div></div>
+              </div>
+
+              <!-- Green -->
+              <h3 id="color-green">Green</h3>
+              <div class="swatch-grid" role="list">
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#f0fdf4"></div><div class="swatch-meta"><span class="swatch-name">green/50</span><code class="swatch-var">--core-green-50</code><span class="swatch-hex">#f0fdf4</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#dcfce7"></div><div class="swatch-meta"><span class="swatch-name">green/100</span><code class="swatch-var">--core-green-100</code><span class="swatch-hex">#dcfce7</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#bbf7d0"></div><div class="swatch-meta"><span class="swatch-name">green/200</span><code class="swatch-var">--core-green-200</code><span class="swatch-hex">#bbf7d0</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#86efac"></div><div class="swatch-meta"><span class="swatch-name">green/300</span><code class="swatch-var">--core-green-300</code><span class="swatch-hex">#86efac</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#4ade80"></div><div class="swatch-meta"><span class="swatch-name">green/400</span><code class="swatch-var">--core-green-400</code><span class="swatch-hex">#4ade80</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#22c55e"><span class="swatch-badge">Primary</span></div><div class="swatch-meta"><span class="swatch-name">green/500</span><code class="swatch-var">--core-green-500</code><span class="swatch-hex">#22c55e</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#16a34a"></div><div class="swatch-meta"><span class="swatch-name">green/600</span><code class="swatch-var">--core-green-600</code><span class="swatch-hex">#16a34a</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#15803d"></div><div class="swatch-meta"><span class="swatch-name">green/700</span><code class="swatch-var">--core-green-700</code><span class="swatch-hex">#15803d</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#166534"></div><div class="swatch-meta"><span class="swatch-name">green/800</span><code class="swatch-var">--core-green-800</code><span class="swatch-hex">#166534</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#14532d"></div><div class="swatch-meta"><span class="swatch-name">green/900</span><code class="swatch-var">--core-green-900</code><span class="swatch-hex">#14532d</span></div></div>
+              </div>
+
+              <!-- Orange -->
+              <h3 id="color-orange">Orange</h3>
+              <div class="swatch-grid" role="list">
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fff7ed"></div><div class="swatch-meta"><span class="swatch-name">orange/50</span><code class="swatch-var">--core-orange-50</code><span class="swatch-hex">#fff7ed</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#ffedd5"></div><div class="swatch-meta"><span class="swatch-name">orange/100</span><code class="swatch-var">--core-orange-100</code><span class="swatch-hex">#ffedd5</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fed7aa"></div><div class="swatch-meta"><span class="swatch-name">orange/200</span><code class="swatch-var">--core-orange-200</code><span class="swatch-hex">#fed7aa</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fdba74"></div><div class="swatch-meta"><span class="swatch-name">orange/300</span><code class="swatch-var">--core-orange-300</code><span class="swatch-hex">#fdba74</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fb923c"></div><div class="swatch-meta"><span class="swatch-name">orange/400</span><code class="swatch-var">--core-orange-400</code><span class="swatch-hex">#fb923c</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#f97316"><span class="swatch-badge">Primary</span></div><div class="swatch-meta"><span class="swatch-name">orange/500</span><code class="swatch-var">--core-orange-500</code><span class="swatch-hex">#f97316</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#ea580c"></div><div class="swatch-meta"><span class="swatch-name">orange/600</span><code class="swatch-var">--core-orange-600</code><span class="swatch-hex">#ea580c</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#c2410c"></div><div class="swatch-meta"><span class="swatch-name">orange/700</span><code class="swatch-var">--core-orange-700</code><span class="swatch-hex">#c2410c</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#9a3412"></div><div class="swatch-meta"><span class="swatch-name">orange/800</span><code class="swatch-var">--core-orange-800</code><span class="swatch-hex">#9a3412</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#7c2d12"></div><div class="swatch-meta"><span class="swatch-name">orange/900</span><code class="swatch-var">--core-orange-900</code><span class="swatch-hex">#7c2d12</span></div></div>
+              </div>
+
+              <!-- Red -->
+              <h3 id="color-red">Red</h3>
+              <div class="swatch-grid" role="list">
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fef2f2"></div><div class="swatch-meta"><span class="swatch-name">red/50</span><code class="swatch-var">--core-red-50</code><span class="swatch-hex">#fef2f2</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fee2e2"></div><div class="swatch-meta"><span class="swatch-name">red/100</span><code class="swatch-var">--core-red-100</code><span class="swatch-hex">#fee2e2</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fecaca"></div><div class="swatch-meta"><span class="swatch-name">red/200</span><code class="swatch-var">--core-red-200</code><span class="swatch-hex">#fecaca</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#fca5a5"></div><div class="swatch-meta"><span class="swatch-name">red/300</span><code class="swatch-var">--core-red-300</code><span class="swatch-hex">#fca5a5</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#f87171"></div><div class="swatch-meta"><span class="swatch-name">red/400</span><code class="swatch-var">--core-red-400</code><span class="swatch-hex">#f87171</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#ef4444"></div><div class="swatch-meta"><span class="swatch-name">red/500</span><code class="swatch-var">--core-red-500</code><span class="swatch-hex">#ef4444</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#dc2626"></div><div class="swatch-meta"><span class="swatch-name">red/600</span><code class="swatch-var">--core-red-600</code><span class="swatch-hex">#dc2626</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#b91c1c"></div><div class="swatch-meta"><span class="swatch-name">red/700</span><code class="swatch-var">--core-red-700</code><span class="swatch-hex">#b91c1c</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#991b1b"></div><div class="swatch-meta"><span class="swatch-name">red/800</span><code class="swatch-var">--core-red-800</code><span class="swatch-hex">#991b1b</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#7f1d1d"></div><div class="swatch-meta"><span class="swatch-name">red/900</span><code class="swatch-var">--core-red-900</code><span class="swatch-hex">#7f1d1d</span></div></div>
+              </div>
+
+              <!-- Purple -->
+              <h3 id="color-purple">Purple</h3>
+              <div class="swatch-grid" role="list">
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#faf5ff"></div><div class="swatch-meta"><span class="swatch-name">purple/50</span><code class="swatch-var">--core-purple-50</code><span class="swatch-hex">#faf5ff</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#f3e8ff"></div><div class="swatch-meta"><span class="swatch-name">purple/100</span><code class="swatch-var">--core-purple-100</code><span class="swatch-hex">#f3e8ff</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#e9d5ff"></div><div class="swatch-meta"><span class="swatch-name">purple/200</span><code class="swatch-var">--core-purple-200</code><span class="swatch-hex">#e9d5ff</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#d8b4fe"></div><div class="swatch-meta"><span class="swatch-name">purple/300</span><code class="swatch-var">--core-purple-300</code><span class="swatch-hex">#d8b4fe</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#c084fc"></div><div class="swatch-meta"><span class="swatch-name">purple/400</span><code class="swatch-var">--core-purple-400</code><span class="swatch-hex">#c084fc</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#a855f7"></div><div class="swatch-meta"><span class="swatch-name">purple/500</span><code class="swatch-var">--core-purple-500</code><span class="swatch-hex">#a855f7</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#9333ea"></div><div class="swatch-meta"><span class="swatch-name">purple/600</span><code class="swatch-var">--core-purple-600</code><span class="swatch-hex">#9333ea</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#7e22ce"></div><div class="swatch-meta"><span class="swatch-name">purple/700</span><code class="swatch-var">--core-purple-700</code><span class="swatch-hex">#7e22ce</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#6b21a8"></div><div class="swatch-meta"><span class="swatch-name">purple/800</span><code class="swatch-var">--core-purple-800</code><span class="swatch-hex">#6b21a8</span></div></div>
+                <div class="swatch-item" role="listitem"><div class="swatch-color" style="background:#581c87"></div><div class="swatch-meta"><span class="swatch-name">purple/900</span><code class="swatch-var">--core-purple-900</code><span class="swatch-hex">#581c87</span></div></div>
+              </div>
+
+              <!-- Semantic / Global -->
+              <h3 id="color-semantic">Semantic</h3>
+              <p>Semantic tokens alias primitives to a <em>purpose</em>. Use these in components — never raw primitives.</p>
+
+              <div class="token-table-wrapper">
+                <table class="token-table">
+                  <thead>
+                    <tr>
+                      <th>Swatch</th>
+                      <th>Token</th>
+                      <th>CSS Variable</th>
+                      <th>References</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><div class="inline-swatch" style="background:#09090b"></div></td><td><code>text/primary</code></td><td><code>--core-text-primary</code></td><td>neutral/950</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#27272a"></div></td><td><code>text/low-primary</code></td><td><code>--core-text-low-primary</code></td><td>neutral/800</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#52525b"></div></td><td><code>text/secondary</code></td><td><code>--core-text-secondary</code></td><td>neutral/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#71717a"></div></td><td><code>text/tertiary</code></td><td><code>--core-text-tertiary</code></td><td>neutral/500</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#a1a1aa"></div></td><td><code>text/disabled</code></td><td><code>--core-text-disabled</code></td><td>neutral/400</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#ffffff;border:1px solid var(--core-color-border)"></div></td><td><code>text/ondark</code></td><td><code>--core-text-ondark</code></td><td>neutral/0</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#2563eb"></div></td><td><code>text/info</code></td><td><code>--core-text-info</code></td><td>blue/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#16a34a"></div></td><td><code>text/positive</code></td><td><code>--core-text-positive</code></td><td>green/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#d97706"></div></td><td><code>text/warning</code></td><td><code>--core-text-warning</code></td><td>orange/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#dc2626"></div></td><td><code>text/danger</code></td><td><code>--core-text-danger</code></td><td>red/600</td></tr>
+                    <tr class="table-group-sep"><td><div class="inline-swatch" style="background:#ffffff;border:1px solid var(--core-color-border)"></div></td><td><code>surface/level-0</code></td><td><code>--core-surface-0</code></td><td>neutral/0</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#fafafa;border:1px solid var(--core-color-border)"></div></td><td><code>surface/level-1</code></td><td><code>--core-surface-1</code></td><td>neutral/50</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#f4f4f5"></div></td><td><code>surface/level-2</code></td><td><code>--core-surface-2</code></td><td>neutral/100</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#e4e4e7"></div></td><td><code>surface/level-3</code></td><td><code>--core-surface-3</code></td><td>neutral/200</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#d4d4d8"></div></td><td><code>surface/level-4</code></td><td><code>--core-surface-4</code></td><td>neutral/300</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#09090b"></div></td><td><code>surface/dark</code></td><td><code>--core-surface-dark</code></td><td>neutral/950</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#f0fdf4"></div></td><td><code>surface/positive</code></td><td><code>--core-surface-positive</code></td><td>green/50</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#fff7ed"></div></td><td><code>surface/warning</code></td><td><code>--core-surface-warning</code></td><td>orange/50</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#fef2f2"></div></td><td><code>surface/danger</code></td><td><code>--core-surface-danger</code></td><td>red/50</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#eff6ff"></div></td><td><code>surface/info</code></td><td><code>--core-surface-info</code></td><td>blue/50</td></tr>
+                    <tr class="table-group-sep"><td><div class="inline-swatch" style="background:#e4e4e7"></div></td><td><code>border/level-0</code></td><td><code>--core-border-0</code></td><td>neutral/200</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#d4d4d8"></div></td><td><code>border/level-1</code></td><td><code>--core-border-1</code></td><td>neutral/300</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#a1a1aa"></div></td><td><code>border/level-2</code></td><td><code>--core-border-2</code></td><td>neutral/400</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#52525b"></div></td><td><code>border/level-3</code></td><td><code>--core-border-3</code></td><td>neutral/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#09090b"></div></td><td><code>border/dark</code></td><td><code>--core-border-dark</code></td><td>neutral/950</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#16a34a"></div></td><td><code>border/positive</code></td><td><code>--core-border-positive</code></td><td>green/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#d97706"></div></td><td><code>border/warning</code></td><td><code>--core-border-warning</code></td><td>orange/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#dc2626"></div></td><td><code>border/danger</code></td><td><code>--core-border-danger</code></td><td>red/600</td></tr>
+                    <tr><td><div class="inline-swatch" style="background:#2563eb"></div></td><td><code>border/info</code></td><td><code>--core-border-info</code></td><td>blue/600</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- ══════════════════════════════════
+                 TYPOGRAPHY
+            ══════════════════════════════════ -->
+            <section id="typography">
+              <h2>Typography</h2>
+              <p>All type is set in <strong>Manrope</strong>. The scale spans four heading levels, body text, button labels, and two caption sizes — each with Regular, Medium, Semibold, and Bold weights.</p>
+
+              <!-- Headings -->
+              <h3 id="type-headings">Headings</h3>
+              <div class="type-table-wrapper">
+                <table class="token-table">
+                  <thead>
+                    <tr><th>Sample</th><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:30px;font-weight:700;line-height:40px;letter-spacing:-1px;white-space:nowrap;display:block">Heading 1</span></td>
+                      <td><code>Heading 1</code></td>
+                      <td><code>30px</code></td>
+                      <td><code>Bold / 700</code></td>
+                      <td><code>40px</code></td>
+                      <td><code>−1px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:24px;font-weight:700;line-height:32px;letter-spacing:-1px;white-space:nowrap;display:block">Heading 2</span></td>
+                      <td><code>Heading 2</code></td>
+                      <td><code>24px</code></td>
+                      <td><code>Bold / 700</code></td>
+                      <td><code>32px</code></td>
+                      <td><code>−1px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:700;line-height:28px;white-space:nowrap;display:block">Heading 3</span></td>
+                      <td><code>Heading 3</code></td>
+                      <td><code>20px</code></td>
+                      <td><code>Bold / 700</code></td>
+                      <td><code>28px</code></td>
+                      <td><code>0</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;line-height:24px;white-space:nowrap;display:block">Heading 4</span></td>
+                      <td><code>Heading 4</code></td>
+                      <td><code>16px</code></td>
+                      <td><code>Bold / 700</code></td>
+                      <td><code>24px</code></td>
+                      <td><code>0</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Body -->
+              <h3 id="type-body">Body</h3>
+              <div class="type-table-wrapper">
+                <table class="token-table">
+                  <thead>
+                    <tr><th>Sample</th><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;line-height:20px">The quick brown fox jumps over the lazy dog.</span></td>
+                      <td><code>Body/Bold</code></td>
+                      <td><code>14px</code></td>
+                      <td><code>Bold / 700</code></td>
+                      <td><code>20px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;line-height:20px">The quick brown fox jumps over the lazy dog.</span></td>
+                      <td><code>Body/Semibold</code></td>
+                      <td><code>14px</code></td>
+                      <td><code>Semibold / 600</code></td>
+                      <td><code>20px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:500;line-height:20px">The quick brown fox jumps over the lazy dog.</span></td>
+                      <td><code>Body/Medium</code></td>
+                      <td><code>14px</code></td>
+                      <td><code>Medium / 500</code></td>
+                      <td><code>20px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:400;line-height:20px">The quick brown fox jumps over the lazy dog.</span></td>
+                      <td><code>Body/Regular</code></td>
+                      <td><code>14px</code></td>
+                      <td><code>Regular / 400</code></td>
+                      <td><code>20px</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Button -->
+              <h3 id="type-button">Button</h3>
+              <div class="type-table-wrapper">
+                <table class="token-table">
+                  <thead>
+                    <tr><th>Sample</th><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;line-height:24px">Button label</span></td>
+                      <td><code>Button/lg</code></td>
+                      <td><code>14px</code></td>
+                      <td><code>Semibold / 600</code></td>
+                      <td><code>24px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;line-height:20px">Button label</span></td>
+                      <td><code>Button/md</code></td>
+                      <td><code>14px</code></td>
+                      <td><code>Semibold / 600</code></td>
+                      <td><code>20px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;line-height:20px">Button label</span></td>
+                      <td><code>Button/sm</code></td>
+                      <td><code>13px</code></td>
+                      <td><code>Semibold / 600</code></td>
+                      <td><code>20px</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Caption -->
+              <h3 id="type-caption">Caption</h3>
+              <div class="type-table-wrapper">
+                <table class="token-table">
+                  <thead>
+                    <tr><th>Sample</th><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/lg/Bold</code></td>
+                      <td><code>13px</code></td><td><code>Bold / 700</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/lg/Semibold</code></td>
+                      <td><code>13px</code></td><td><code>Semibold / 600</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:500;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/lg/Medium</code></td>
+                      <td><code>13px</code></td><td><code>Medium / 500</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:400;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/lg/Regular</code></td>
+                      <td><code>13px</code></td><td><code>Regular / 400</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/sm/Bold</code></td>
+                      <td><code>12px</code></td><td><code>Bold / 700</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/sm/Semi-Bold</code></td>
+                      <td><code>12px</code></td><td><code>Semibold / 600</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/sm/Medium</code></td>
+                      <td><code>12px</code></td><td><code>Medium / 500</code></td><td><code>16px</code></td>
+                    </tr>
+                    <tr>
+                      <td><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:400;line-height:16px">Caption label</span></td>
+                      <td><code>Caption/sm/Regular</code></td>
+                      <td><code>12px</code></td><td><code>Regular / 400</code></td><td><code>16px</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- ══════════════════════════════════
+                 SPACING
+            ══════════════════════════════════ -->
+            <section id="spacing">
+              <h2>Spacing</h2>
+              <p>The spacing scale is defined as pixel values in Figma with a <code>GAP</code> scope. Use these tokens for padding, margin, and gap in layouts.</p>
+
+              <div class="spacing-list" role="list">
+                <!-- values from Figma: 0,1,2,4,6,8,12,14,16,18,20,24,32,36,40,48,56,64,72,80,96,120,152,200 -->
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:0px;min-width:2px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/0</code><span class="spacing-val">0px &nbsp;·&nbsp; 0rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:1px;min-width:2px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/1</code><span class="spacing-val">1px</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:2px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/2</code><span class="spacing-val">2px</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/4</code><span class="spacing-val">4px &nbsp;·&nbsp; 0.25rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:6px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/6</code><span class="spacing-val">6px</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/8</code><span class="spacing-val">8px &nbsp;·&nbsp; 0.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:12px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/12</code><span class="spacing-val">12px &nbsp;·&nbsp; 0.75rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:14px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/14</code><span class="spacing-val">14px</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/16</code><span class="spacing-val">16px &nbsp;·&nbsp; 1rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:18px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/18</code><span class="spacing-val">18px</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:20px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/20</code><span class="spacing-val">20px &nbsp;·&nbsp; 1.25rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/24</code><span class="spacing-val">24px &nbsp;·&nbsp; 1.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/32</code><span class="spacing-val">32px &nbsp;·&nbsp; 2rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:36px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/36</code><span class="spacing-val">36px &nbsp;·&nbsp; 2.25rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:40px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/40</code><span class="spacing-val">40px &nbsp;·&nbsp; 2.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/48</code><span class="spacing-val">48px &nbsp;·&nbsp; 3rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:56px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/56</code><span class="spacing-val">56px &nbsp;·&nbsp; 3.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:64px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/64</code><span class="spacing-val">64px &nbsp;·&nbsp; 4rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:72px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/72</code><span class="spacing-val">72px &nbsp;·&nbsp; 4.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:80px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/80</code><span class="spacing-val">80px &nbsp;·&nbsp; 5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:96px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/96</code><span class="spacing-val">96px &nbsp;·&nbsp; 6rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:120px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/120</code><span class="spacing-val">120px &nbsp;·&nbsp; 7.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:152px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/152</code><span class="spacing-val">152px &nbsp;·&nbsp; 9.5rem</span></div>
+                <div class="spacing-row" role="listitem"><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:200px;height:12px;background:var(--core-neutral-950)"></div></div><code class="spacing-var">size/spacing/200</code><span class="spacing-val">200px &nbsp;·&nbsp; 12.5rem</span></div>
+              </div>
+            </section>
+
+            <!-- ══════════════════════════════════
+                 BORDER RADIUS
+            ══════════════════════════════════ -->
+            <section id="radius">
+              <h2>Border Radius</h2>
+              <p>Four radius values from Figma's <code>CORNER_RADIUS</code> scope. Use <code>Round</code> for pills, avatars, and circular elements.</p>
+
+              <div class="radius-grid" role="list">
+                <div class="radius-item" role="listitem">
+                  <div class="radius-box" style="border-radius:4px"></div>
+                  <div class="radius-meta">
+                    <code class="radius-token">size/radius/4</code>
+                    <span class="radius-value">4px</span>
+                  </div>
+                </div>
+                <div class="radius-item" role="listitem">
+                  <div class="radius-box" style="border-radius:8px"></div>
+                  <div class="radius-meta">
+                    <code class="radius-token">size/radius/8</code>
+                    <span class="radius-value">8px</span>
+                  </div>
+                </div>
+                <div class="radius-item" role="listitem">
+                  <div class="radius-box" style="border-radius:12px"></div>
+                  <div class="radius-meta">
+                    <code class="radius-token">size/radius/12</code>
+                    <span class="radius-value">12px</span>
+                  </div>
+                </div>
+                <div class="radius-item" role="listitem">
+                  <div class="radius-box" style="border-radius:9999px"></div>
+                  <div class="radius-meta">
+                    <code class="radius-token">size/radius/Round</code>
+                    <span class="radius-value">9999px</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Page nav -->
+            <nav class="page-nav" aria-label="Page navigation">
+              <a href="index.html" class="page-nav-link">
+                <span class="page-nav-label">← Previous</span>
+                <span class="page-nav-name">Introduction</span>
+              </a>
+              <a href="#" class="page-nav-link next">
+                <span class="page-nav-label">Next</span>
+                <span class="page-nav-name">Components →</span>
+              </a>
+            </nav>
+
+          </article>
+        </main>
+      </div>
+    </div>
+
+    <!-- ═══ TOC ═══ -->
+    <aside class="toc" aria-label="On this page">
+      <p class="toc-heading">On this page</p>
+      <ul class="toc-list">
+        <li><a href="#color"           class="toc-link active">Color</a></li>
+        <li><a href="#color-neutral"   class="toc-link level-3">Neutral</a></li>
+        <li><a href="#color-blue"      class="toc-link level-3">Blue</a></li>
+        <li><a href="#color-green"     class="toc-link level-3">Green</a></li>
+        <li><a href="#color-orange"    class="toc-link level-3">Orange</a></li>
+        <li><a href="#color-red"       class="toc-link level-3">Red</a></li>
+        <li><a href="#color-purple"    class="toc-link level-3">Purple</a></li>
+        <li><a href="#color-semantic"  class="toc-link level-3">Semantic</a></li>
+        <li><a href="#typography"      class="toc-link">Typography</a></li>
+        <li><a href="#type-headings"   class="toc-link level-3">Headings</a></li>
+        <li><a href="#type-body"       class="toc-link level-3">Body</a></li>
+        <li><a href="#type-button"     class="toc-link level-3">Button</a></li>
+        <li><a href="#type-caption"    class="toc-link level-3">Caption</a></li>
+        <li><a href="#spacing"         class="toc-link">Spacing</a></li>
+        <li><a href="#radius"          class="toc-link">Border Radius</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
