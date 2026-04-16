@@ -631,6 +631,58 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* ============================================================
+   SHARED TABLE (token tables, props tables)
+   ============================================================ */
+.token-table-wrapper,
+.type-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--core-color-border);
+  border-radius: var(--core-radius-lg);
+}
+
+.token-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--core-text-sm);
+}
+
+.token-table thead {
+  border-bottom: 1px solid var(--core-color-border);
+  background: var(--core-color-surface);
+}
+
+.token-table th {
+  padding: var(--core-space-2) var(--core-space-4);
+  text-align: left;
+  font-size: var(--core-text-xs);
+  font-weight: var(--core-weight-semibold);
+  letter-spacing: var(--core-tracking-wide);
+  text-transform: uppercase;
+  color: var(--core-color-muted-fg);
+  white-space: nowrap;
+}
+
+.token-table td {
+  padding: var(--core-space-2) var(--core-space-4);
+  border-bottom: 1px solid var(--core-color-border);
+  color: var(--core-color-fg);
+  vertical-align: middle;
+}
+
+.token-table tr:last-child td { border-bottom: none; }
+.token-table tr:hover td { background: var(--core-color-surface); }
+
+.token-table code {
+  font-family: var(--core-font-mono);
+  font-size: var(--core-text-xs);
+  background: var(--core-color-muted);
+  border: 1px solid var(--core-color-border);
+  border-radius: var(--core-radius-sm);
+  padding: 1px 5px;
+  color: var(--core-color-fg);
+}
+
+/* ============================================================
    COMPONENT PREVIEW
    ============================================================ */
 .component-preview {
